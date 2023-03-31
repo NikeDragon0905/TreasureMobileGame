@@ -17,9 +17,12 @@ mongoose.connect(MONGODB_URI, {
 	console.log(err || `Connected to MongoDB.`)
 })
 
-app.use(express.static(`${__dirname}/client/build`))
+// app.use(express.static(`${__dirname}/client/build`))
+app.use('/', express.static(`${__dirname}/../client`))
 app.use(logger('dev'))
 app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/api', (req, res) => {
 	res.json({message: "API root."})
@@ -27,9 +30,9 @@ app.get('/api', (req, res) => {
 
 app.use('/api/users', usersRoutes)
 
-app.use('*', (req, res) => {
-	res.sendFile(`${__dirname}/client/build/index.html`)
-})
+// app.use('*', (req, res) => {
+// 	res.sendFile(`${__dirname}/client/build/index.html`)
+// })
 
 app.listen(PORT, (err) => {
 	console.log(err || `Server running on port ${PORT}.`)

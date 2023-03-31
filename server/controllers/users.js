@@ -20,6 +20,9 @@ module.exports = {
 
 	// create a new user
 	create: (req, res) => {
+		console.log(req.body);
+		res.json({success: true});
+		return;
 		User.create(req.body, (err, user) => {
 			if(err) return res.json({success: false, code: err.code})
 			// once user is created, generate a token to "log in":
