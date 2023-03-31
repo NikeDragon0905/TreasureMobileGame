@@ -1,0 +1,39 @@
+<!-- Landing Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POTLUCK - LANDING</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- include Fonts stylesheet -->
+  <link rel="stylesheet" href="font/AlbertusNova/style.css">
+  <!-- include Tailwind CSS stylesheet -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- include Tailwind CSS custom configration -->
+  <script type="text/javascript" src="js/tailwind.config.js"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+  <div id="screen" style="background-image: url('img/bg_landing.jpg')">
+    <!-- Your page content goes here -->
+    <div class="absolute w-full top-[calc(var(--screenHeight)*50/100)]">
+      <div class="text-center">
+        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow" onclick="(window.location.href='login.html')">LOG IN</button>
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
+        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow" onclick="(window.location.href='register.html')">CREATE ACCOUNT</button>
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)/100)]">
+        <h3 class="text-black text-[calc(var(--screenHeight)*3.5/100)] font-essays">TODAY'S WINNINGS:</h3>
+        <h1 class="mt-[calc(var(--screenHeight)*-4/100)] text-green text-[calc(var(--screenHeight)*13/100)] font-essays">$5,130</h1>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

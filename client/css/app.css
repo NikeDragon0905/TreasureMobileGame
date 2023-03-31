@@ -1,0 +1,63 @@
+/* @import url(//db.onlinewebfonts.com/c/ee8d36541eca4734816e451797c37a95?family=Albertus+Nova+Black);
+
+@font-face {
+  font-family: "Albertus Nova";
+  src: url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.eot");
+  src: url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.woff") format("woff"), url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/ee8d36541eca4734816e451797c37a95.svg#Albertus Nova Black") format("svg");
+} */
+
+@import url('https://fonts.cdnfonts.com/css/essays-1743');
+@import url('https://fonts.cdnfonts.com/css/adumu-inline');
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  /* background-color: #A9C9FF;
+  background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%); */
+  overflow: hidden;
+}
+
+#screen {
+  display: none;
+  position: relative;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* box-shadow: 0px 0px 11px 5px #3e3e3e; */
+  z-index: 1;
+}
+
+button {
+  font-family: 'Albertus Nova', 'Arial';
+}
+
+.text-shadow-black {
+  text-shadow: 2px 2px 3px black, -2px -2px 3px black
+}
+
+.text-shadow-darkgreen {
+  text-shadow: 2px 2px 3px #073300, -2px -2px 3px #073300
+}
+
+.text-shadow-yellow {
+  text-shadow: 2px 2px 3px #fbc527, -2px -2px 3px #fbc527
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}

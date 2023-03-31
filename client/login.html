@@ -1,0 +1,71 @@
+<!-- Landing Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POTLUCK - LOGIN</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- include Fonts stylesheet -->
+  <link rel="stylesheet" href="font/AlbertusNova/style.css">
+  <!-- include Tailwind CSS stylesheet -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- include Tailwind CSS custom configration -->
+  <script type="text/javascript" src="js/tailwind.config.js"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+<style>
+  INPUT[type=checkbox]:focus
+    {
+        outline: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    INPUT[type=checkbox]
+    {
+        background-color: #00000000;
+        border: 2px solid #073300 ;
+        border-radius: 2px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: calc(var(--screenHeight)*4.7/100);
+        height: calc(var(--screenHeight)*2.56/100);
+        cursor: pointer;
+        position: relative;
+        top: calc(var(--screenHeight)*1.45/100);
+    }
+
+    INPUT[type=checkbox]:checked
+    {
+      background-color: #073300;
+      background: #073300 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") calc(var(--screenHeight)*0.37/100) calc(var(--screenHeight)*0.24/100) no-repeat;
+      background-size: calc(var(--screenHeight)*1.6/100) calc(var(--screenHeight)*1.5/100);    
+    }
+</style>
+<body>
+  <div id="screen" style="background-image: url('img/bg_auth.jpg')">
+    <!-- Your page content goes here -->
+    <div class="absolute w-full top-[calc(var(--screenHeight)*50/100)]">
+      <form action="">
+        <div class="text-center font-albertus">
+          <input type="email" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="E-mail" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input type="password" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="Password" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] text-green text-[calc(var(--screenHeight)*2.4/100)] font-adumu hover:text-darkgreen" onclick="(window.location.href='register.html')">FORGOT POAAWORD?</button>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
+          <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] font-essays border-black hover:text-yellow hover:border-yellow" onclick="(window.location.href='home.html')">LOGIN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

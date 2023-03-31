@@ -1,0 +1,71 @@
+<!-- Landing Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POTLUCK - SETTING</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- include Fonts stylesheet -->
+  <link rel="stylesheet" href="font/AlbertusNova/style.css">
+  <!-- include Tailwind CSS stylesheet -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- include Tailwind CSS custom configration -->
+  <script type="text/javascript" src="js/tailwind.config.js"></script>
+  <!-- include jQuery -->
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+  <div id="screen" style="background-image: url('img/bg_general.jpg')">
+    <!-- Header -->
+    <div class="flex w-full h-[calc(var(--screenHeight)*16.8/100)] px-[calc(var(--screenHeight)*2/100)] justify-center items-center">
+      <div class="font-adumu">
+        <h3 class="text-white text-[calc(var(--screenHeight)*8/100)] text-shadow-black">USER PROFILE</h3>
+      </div>
+    </div>
+    <!-- Profile symbol -->
+    <div class="mt-[calc(var(--screenHeight)*-3.5/100)] flex w-full justify-center">
+      <img src="img/symbol_profile.png" class="w-[calc(var(--screenHeight)*22/100)] rounded-[50%]">
+    </div>
+    <!-- Choose treasure -->
+    <div class="mt-[calc(var(--screenHeight)*5/100)] text-center">
+      <div class="font-albertus">
+        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="Camilia Wilson">
+      </div>
+      <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
+        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="yxwang028@outlook.com">
+      </div>
+      <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
+        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="Germany - Euro">
+      </div>
+      <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
+        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="$993.00">
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)*2.4/100)] font-essays">
+        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*3/100)] border-black hover:text-yellow hover:border-yellow" onclick="(window.location.href = 'index.html')">LOG OUT</button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="absolute w-full bottom-[calc(var(--screenHeight)*0.4/100)]">
+      <div class="flex justify-between mt-[calc(var(--screenHeight)*3.6/100)] px-[calc(var(--screenHeight)*2/100)]">
+        <a href="home.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+          <img src="img/icon_home.png" class="w-[calc(var(--screenHeight)*7/100)]">
+        </a>
+        <a href="wallet.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+          <img src="img/icon_wallet.png" class="w-[calc(var(--screenHeight)*8/100)]">
+        </a>
+        <a href="leaderboard.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+          <img src="img/icon_leaderboard.png" class="w-[calc(var(--screenHeight)*7/100)]">
+        </a>
+        <a href="#" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+          <img src="img/icon_profile_on.png" class="w-[calc(var(--screenHeight)*7/100)]">
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
