@@ -21,6 +21,7 @@ module.exports = {
 	create: (req, res) => {
 		// res.json({success: true});
 		// return;
+		console.log(req.body)
 		User.create(req.body, (err, user) => {
 			if(err) {
 				console.log(err);

@@ -1,2 +1,4 @@
 /server/.env
+/server/.gitignore
+*.zip
 node_modules

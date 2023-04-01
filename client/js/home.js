@@ -63,7 +63,7 @@ function preCheck() {
     success: function(res) {
         // Handle successful response
         console.log(res);
-        const { success, message, data } = res;
+        const { success, message, code, data } = res;
         if(success) {
           $('#balance').text(data.balance.toLocaleString());
           playGame(data.playlog_id, playmode_id);

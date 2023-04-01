@@ -5,7 +5,6 @@ const
 	logger = require('morgan'),
 	bodyParser = require('body-parser'),
 	cors = require('cors'),
-	session = require('express-session'),
 	mongoose = require('mongoose'),
 	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
 	PORT = process.env.PORT || 3001,
@@ -29,13 +28,6 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(session({
-	secret: 'justsomestuff',
-	resave: false,
-	saveUninitialized: false,
-	expires: new Date(Date.now() + (60 * 60 * 24 * 7 * 1000)),
-	cookie: {  } ,
-}));
 
 app.get('/api', (req, res) => {
 	res.json({message: "API root."})
