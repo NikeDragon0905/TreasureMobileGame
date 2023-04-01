@@ -99,6 +99,14 @@ function playGame(playlog_id, playmode_id) {
 
   chestAnime.onclick = function(){
     if(sec === 0) return;
+    var winSound = new Howl({
+      src: ['../audio/click.wav'],
+      autoplay: true,
+      loop: false,
+      volume: 1
+    });
+    winSound.play();
+
     userClicks = userClicks + 1;
     lblCount.innerHTML = 'CLICKS : ' + userClicks;
 
@@ -164,7 +172,7 @@ function winner(balance, benefit) {
   $('.winnerModal').show();
   hidePlayground();
   var winSound = new Howl({
-    src: ['audio/win.wav'],
+    src: ['../audio/win.wav'],
     autoplay: true,
     loop: false,
     volume: 1
@@ -176,7 +184,7 @@ function loser() {
   $('.loserModal').show();
   hidePlayground();
   var LoseSound = new Howl({
-    src: ['audio/Lose.wav'],
+    src: ['../audio/Lose.wav'],
     autoplay: true,
     loop: false,
     volume: 1
@@ -194,4 +202,13 @@ $(document).ready(function() {
   $('#closeLoseModalBtn').click(function() {
     $('.loserModal').hide();
   });
+
+  var sound = new Howl({
+    src: ['../audio/bg.mp3'],
+    autoplay: true,
+    loop: true,
+    volume: 0.5
+  });
+  
+  setTimeout(sound.play, 3000);
 })
