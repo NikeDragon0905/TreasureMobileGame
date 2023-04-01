@@ -2,7 +2,8 @@ const
 	express = require('express'),
 	usersRouter = new express.Router(),
 	usersCtrl = require('../controllers/users.js'),
-	verifyToken = require('../serverAuth.js').verifyToken
+	verifyToken = require('../serverAuth.js').verifyToken;
+
 
 usersRouter.route('/')
 	.get(usersCtrl.index)
@@ -11,10 +12,10 @@ usersRouter.route('/')
 usersRouter.post('/authenticate', usersCtrl.authenticate)
 
 
-usersRouter.use(verifyToken)
+// usersRouter.use(verifyToken)
 usersRouter.route('/:id')
-	.get(usersCtrl.show)
-	.patch(usersCtrl.update)
-	.delete(usersCtrl.destroy)
+	.get(verifyToken, usersCtrl.show)
+	.patch(verifyToken, usersCtrl.update)
+	.delete(verifyToken, usersCtrl.destroy)
 
 module.exports = usersRouter
