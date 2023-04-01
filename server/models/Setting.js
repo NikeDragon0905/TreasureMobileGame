@@ -3,7 +3,8 @@ const
 	settingSchema = new mongoose.Schema({
 		nth_player: { type: Number, required: true, default: 30 },
 		min_click: { type: Number, required: true, default: 30 },
-		cur_order: { type: Number, required: true, default: 0 }
+		cur_order: { type: Number, required: true, default: 0 },
+		today_winnings: { type: Number, required: true, default: 200 }
 	})
 
 const Setting = mongoose.model('Setting', settingSchema)

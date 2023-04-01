@@ -28,4 +28,7 @@ const
 	clientRouter.route('/profile')
 	.get(clientCtrl.profile);
 
+	clientRouter.route('/withdrawal')
+	.post(clientCtrl.withdrawal)
+
 module.exports = clientRouter

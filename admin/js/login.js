@@ -11,7 +11,7 @@ $(document).ready(function() {
         isEmpty(email) ||
         isEmpty(password)
       ) {
-        alert('You have to field out all the inputs.');
+        alert('Please fill in all information.');
         return;
       }
       if (!emailValidation(email)) {

@@ -21,7 +21,7 @@ function init() {
           // Add play modes
           const $playmodes = $('#playmodes');
           data.playmodes.map(item => {
-            $playmodes.append(`<option value="${item._id}">PLAY $${item.need} (WIN $${item.benefit})</option>`);
+            $playmodes.append(`<option value="${item._id}" class="text-[calc(var(--screenHeight)*2.4/100)]">PLAY $${item.need} (WIN $${item.benefit})</option>`);
           });
         } else {
           if (code === 401) {
@@ -98,6 +98,7 @@ function playGame(playlog_id, playmode_id) {
   console.log(chestAnime);
 
   chestAnime.onclick = function(){
+    if(sec === 0) return;
     userClicks = userClicks + 1;
     lblCount.innerHTML = 'CLICKS : ' + userClicks;
 
@@ -159,47 +160,38 @@ function endGame(playlog_id, playmode_id, clicks) {
 
 function winner(balance, benefit) {
   $('#balance').text(balance.toLocaleString());
-  Swal.fire({
-    icon: 'success',
-    customClass: 'font-albertus w-[80%]',
-    background: '#0e4f04',
-    confirmButtonColor: '#d3a51b',
-    color: '#fff',
-    backdrop: false,
-    title: 'GREAT',
-    text: `You Win. Please Get ${benefit}$ For This Winning Prize!`,
-  }).then(result => hidePlayground());
-    var loseSound = new Howl({
-    src: ['audio/lose.wav'],
+  $('.winnerModal .prize').text(benefit.toLocaleString());
+  $('.winnerModal').show();
+  hidePlayground();
+  var winSound = new Howl({
+    src: ['audio/win.wav'],
     autoplay: true,
     loop: false,
     volume: 1
   });
-  loseSound.play();
+  winSound.play();
 }
 
 function loser() {
-  Swal.fire({
-    icon: 'error',
-    customClass: 'font-albertus w-[80%]',
-    background: '#0e4f04',
-    confirmButtonColor: '#d3a51b',
-    color: '#fff',
-    backdrop: false,
-    title: 'SORRY',
-    text: 'Another Player Won This Round. Better Luck Next Time!',
-  }).then(result => hidePlayground());
-    var loseSound = new Howl({
-    src: ['audio/lose.wav'],
+  $('.loserModal').show();
+  hidePlayground();
+  var LoseSound = new Howl({
+    src: ['audio/Lose.wav'],
     autoplay: true,
     loop: false,
     volume: 1
   });
-  loseSound.play();
+  LoseSound.play();
 }
 
 $(document).ready(function() {
   $('#playBtn').click(function(e) {
     preCheck();
+  });
+  $('#closeWinModalBtn').click(function() {
+    $('.winnerModal').hide();
+  });
+  $('#closeLoseModalBtn').click(function() {
+    $('.loserModal').hide();
   });
 })

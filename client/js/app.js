@@ -13,6 +13,7 @@ const setScreenSize = () => {
   } else {
     screenHeight = browserWidth / ratio;
   }
+  // screenHeight = screenHeight * 0.94;
   screenWidth = screenHeight * ratio;
   // Set mobile screen size
   const screen = document.getElementById('screen');

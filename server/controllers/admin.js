@@ -3,6 +3,7 @@ const PlayLog = require('../models/PlayLog.js')
 const User = require('../models/User.js')
 const Setting = require('../models/Setting.js')
 const Notification = require('../models/Notification.js')
+const WithDrawal = require('../models/WithDrawal.js');
 
 module.exports = {
     // list all playmode
@@ -62,5 +63,10 @@ module.exports = {
             .then(() => res.json({success: true, message: 'success'}))
             .catch(() => res.json({success: false, message: err}));
     },
+
+    withdrawal: async (req, res) => {
+        let withdrawals = await WithDrawal.find()
+        res.json({success: true, message: 'success', data: {withdrawals}})
+    }
 
 }

@@ -2,69 +2,83 @@ const PlayMode = require('../models/PlayMode.js')
 const PlayLog = require('../models/PlayLog.js')
 const User = require('../models/User.js')
 const Setting = require('../models/Setting.js')
+const WithDrawal = require('../models/WithDrawal.js')
 
 module.exports = {
     // list all playmode
-    home: (req, res) => {
-        PlayMode.find({}, (err, playmodes) => {
-            if (err) {
-                res.json({
-                    success: false,
-                    message: err
-                })
-                return
+    home: async (req, res) => {
+        // PlayMode.find({}, (err, playmodes) => {
+        //     if (err) {
+        //         res.json({
+        //             success: false,
+        //             message: err
+        //         })
+        //         return
+        //     }
+        //     const startOfDay = new Date()
+        //     startOfDay.setHours(0, 0, 0, 0)
+
+        //     const endOfDay = new Date()
+        //     endOfDay.setHours(23, 59, 59, 999)
+
+        //     PlayLog.aggregate([{
+        //             $match: {
+        //                 updated_at: {
+        //                     $gte: new Date(startOfDay),
+        //                     $lte: new Date(endOfDay)
+        //                 }
+        //             }
+        //         },
+        //         {
+        //             $group: {
+        //                 _id: null,
+        //                 total_prize: {
+        //                     $sum: "$prize"
+        //                 }
+        //             }
+        //         }
+        //     ]).exec((err1, result) => {
+
+        //         if (err1) {
+        //             res.json({
+        //                 success: false,
+        //                 message: err1
+        //             })
+        //             return
+        //         } else {
+        //             let total_prize = 0;
+        //             if (result.length != 0)
+        //                 total_prize = result[0].total_prize;
+        //             User
+        //                 .findById(req.user.id)
+        //                 .then(user => {
+        //                     res.json({
+        //                         success: true,
+        //                         message: 'Sucess',
+        //                         data: {
+        //                             playmodes,
+        //                             totalWinnings: total_prize,
+        //                             username: req.user.username,
+        //                             balance: user.balance,
+        //                         }
+        //                     })
+        //                 })
+        //         }
+        //     })
+        // })
+        const playmodes = await PlayMode.find();
+        const setting = await Setting.findOne();
+        const user = await User.findById(req.user.id);
+        res.json({
+            success: true,
+            message: 'Sucess',
+            data: {
+                playmodes,
+                totalWinnings: setting.today_winnings,
+                username: req.user.username,
+                balance: user.balance,
             }
-            const startOfDay = new Date()
-            startOfDay.setHours(0, 0, 0, 0)
-
-            const endOfDay = new Date()
-            endOfDay.setHours(23, 59, 59, 999)
-
-            PlayLog.aggregate([{
-                    $match: {
-                        updated_at: {
-                            $gte: new Date(startOfDay),
-                            $lte: new Date(endOfDay)
-                        }
-                    }
-                },
-                {
-                    $group: {
-                        _id: null,
-                        total_prize: {
-                            $sum: "$prize"
-                        }
-                    }
-                }
-            ]).exec((err1, result) => {
-
-                if (err1) {
-                    res.json({
-                        success: false,
-                        message: err1
-                    })
-                    return
-                } else {
-                    let total_prize = 0;
-                    if (result.length != 0)
-                        total_prize = result[0].total_prize;
-                    User
-                        .findById(req.user.id)
-                        .then(user => {
-                            res.json({
-                                success: true,
-                                message: 'Sucess',
-                                data: {
-                                    playmodes,
-                                    totalWinnings: total_prize,
-                                    username: req.user.username,
-                                    balance: user.balance,
-                                }
-                            })
-                        })
-                }
-            })
-        })
+        });
     },
 
     precheck: (req, res) => {
@@ -244,49 +258,67 @@ module.exports = {
         })
     },
 
-    landing: (req, res) => {
-        const startOfDay = new Date()
-        startOfDay.setHours(0, 0, 0, 0)
+    landing: async (req, res) => {
+        // const startOfDay = new Date()
+        // startOfDay.setHours(0, 0, 0, 0)
 
-        const endOfDay = new Date()
-        endOfDay.setHours(23, 59, 59, 999)
+        // const endOfDay = new Date()
+        // endOfDay.setHours(23, 59, 59, 999)
 
-        PlayLog.aggregate([{
-                $match: {
-                    updated_at: {
-                        $gte: new Date(startOfDay),
-                        $lte: new Date(endOfDay)
-                    }
-                }
-            },
-            {
-                $group: {
-                    _id: null,
-                    total_prize: {
-                        $sum: "$prize"
-                    }
-                }
+        // PlayLog.aggregate([{
+        //         $match: {
+        //             updated_at: {
+        //                 $gte: new Date(startOfDay),
+        //                 $lte: new Date(endOfDay)
+        //             }
+        //         }
+        //     },
+        //     {
+        //         $group: {
+        //             _id: null,
+        //             total_prize: {
+        //                 $sum: "$prize"
+        //             }
+        //         }
+        //     }
+        // ]).exec((err1, result) => {
+
+        //     if (err1) {
+        //         res.json({
+        //             success: false,
+        //             message: err1
+        //         })
+        //         return
+        //     } else {
+        //         let total_prize = 0;
+        //         if (result.length != 0)
+        //             total_prize = result[0].total_prize;
+        //             res.json({
+        //                 success: true,
+        //                 message: 'Sucess',
+        //                 data: {
+        //                     totalWinnings: total_prize,
+        //                 }
+        //             })
+        //     }
+        // })
+        const setting = await Setting.findOne();
+        res.json({
+            success: true,
+            message: 'Landing is loaded.',
+            data: {
+                totalWinnings: setting.today_winnings,
             }
-        ]).exec((err1, result) => {
+        })
+    },
 
-            if (err1) {
-                res.json({
-                    success: false,
-                    message: err1
-                })
-                return
-            } else {
-                let total_prize = 0;
-                if (result.length != 0)
-                    total_prize = result[0].total_prize;
-                    res.json({
-                        success: true,
-                        message: 'Sucess',
-                        data: {
-                            totalWinnings: total_prize,
-                        }
-                    })
-            }
+    withdrawal: (req, res) => {
+        WithDrawal.create(req.body, (err, withdrawal) => {
+            if(err) {
+				console.log(err);
+				return res.json({success: false, code: err.code})
+			}
+			res.json({success: true, message: "withdrawal created."})
         })
     }
 }

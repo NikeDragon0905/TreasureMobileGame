@@ -1,5 +1,3 @@
-const admin = require('../controllers/admin.js');
-
 const
 	express = require('express'),
 	adminRouter = new express.Router(),
@@ -26,5 +24,6 @@ const
 
     adminRouter.post('/message', adminCtrl.message)
 
+    adminRouter.get('/withdrawal', adminCtrl.withdrawal)
 
 module.exports = adminRouter

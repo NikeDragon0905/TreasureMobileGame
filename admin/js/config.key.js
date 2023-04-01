@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://192.168.123.27:3000';
+const SERVER_URL = 'http://localhost:3000';
 const ROUND_TIME = 3;
 const CURRENCY_TYPE = {
   'USD': 'USD',

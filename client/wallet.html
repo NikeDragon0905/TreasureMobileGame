@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing</title>
+  <title>POTLUCK - WALLET</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/wallet.css">
   <!-- include Fonts stylesheet -->
   <link rel="stylesheet" href="font/AlbertusNova/style.css">
   <!-- include Tailwind CSS stylesheet -->
@@ -18,6 +19,8 @@
   <script type="text/javascript" src="js/tailwind.config.js"></script>
   <!-- include jQuery -->
   <script type="text/javascript" src="js/app.js"></script>
+  <!-- include Paypal -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXouvFa0ldbNrZ-awOAv1eFe-fltquwueLH-HqUNqFOfVtcgZmb5FglKkRrNTAYOcFH9_8GMcmRYbZMQ&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"></script>
 </head>
 <body>
   <div id="screen" style="background-image: url('img/bg_wallet.jpg')">
@@ -36,10 +39,11 @@
         <h1 class="mt-[calc(var(--screenHeight)*-2/100)] text-white text-[calc(var(--screenHeight)*10/100)] font-essays">$<label id="balance">0</label></h1>
       </div>
       <div class="mt-[calc(var(--screenHeight)*2/100)] text-center font-albertus">
-        <button class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)/100)] border-[calc(var(--screenHeight)*0.22/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.2/100)] border-yellow hover:text-yellow">ADD FUNDS</button>
-        <button class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)/100)] border-[calc(var(--screenHeight)*0.22/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.2/100)] border-yellow hover:text-yellow ml-[calc(var(--screenHeight)*1.5/100)]">WITHDRAW</button>
+        <button id="addFundsBtn" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)/100)] border-[calc(var(--screenHeight)*0.22/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.2/100)] border-yellow hover:text-yellow">ADD FUNDS</button>
+        <button id="withdrawBtn" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)/100)] border-[calc(var(--screenHeight)*0.22/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.2/100)] border-yellow hover:text-yellow ml-[calc(var(--screenHeight)*1.5/100)]">WITHDRAW</button>
       </div>
     </div>
+    <!-- Add Funtionality -->
     <div class="absolute w-full top-[calc(var(--screenHeight)*60/100)]">
       <div class="flex justify-between mt-[calc(var(--screenHeight)*3.6/100)] px-[calc(var(--screenHeight)*5/100)]">
         <button class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
@@ -50,12 +54,13 @@
         </button>
       </div>
     </div>
+    <!-- Footer -->
     <div class="absolute w-full bottom-[calc(var(--screenHeight)*0.4/100)]">
       <div class="flex justify-between mt-[calc(var(--screenHeight)*3.6/100)] px-[calc(var(--screenHeight)*2/100)]">
-        <a href="#" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+        <a href="home.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
           <img src="img/icon_home.png" class="w-[calc(var(--screenHeight)*7/100)]" alt="icon-home" draggable="false">
         </a>
-        <a href="wallet.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
+        <a href="#" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
           <img src="img/icon_wallet_on.png" class="w-[calc(var(--screenHeight)*8/100)]" alt="icon-wallet-on" draggable="false">
         </a>
         <a href="leaderboard.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
@@ -66,8 +71,155 @@
         </a>
       </div>
     </div>
+    <!-- ADD FUNDS / WIDTHDRAW -->
+    <div id="addFundsBlackboard">
+      <div class="header">
+        <h3 class="text-center text-white font-adumu text-[calc(var(--screenHeight)*8/100)] ">PAYPAL</h3>
+      </div>
+      <div class="content">
+        <div id="smart-button-container" class="mt-[calc(var(--screenHeight)*3/100)]">
+          <div style="text-align: center">
+            <input type="text" name="descriptionInput" id="description" maxlength="127" value="" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white font-albertus text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="Description">
+          </div>
+          <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+          <div style="text-align: center">
+            <input name="amountInput" type="number" id="amount" value="" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white font-albertus text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="USD">
+          </div>
+          <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+          <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+          <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+          <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+          <div class="text-center mt-[calc(var(--screenHeight)*4/100)]">
+            <button id="backBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">GO BACK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="withdrawBlackboard">
+      <div class="header">
+        <h3 class="text-center text-white font-adumu text-[calc(var(--screenHeight)*8/100)] ">WITHDRAW</h3>
+      </div>
+      <div class="content">
+        <div class="mt-[calc(var(--screenHeight)*3/100)] text-center font-albertus">
+          <input id="account_name" type="email" name="accunt" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="ACCOUNT NAME" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="bank" type="text" name="bank" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="BANK" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="swift_bic_code" type="text" name="biccode" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="SWITF/BIC CODE" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="iban" type="text" name="iban" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="IBAN" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="country" type="text" name="country" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="COUNTRY" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="withdrawal_amount" type="text" name="withdrawal_amount" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="WITHDRAWAL AMOUNT" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+          <input id="currency" type="text" name="currency" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="CURRENCY" required>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*4/100)]">
+          <button id="submitBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">SUBMIT</button>
+        </div>
+        <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
+          <button id="backBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">GO BACK</button>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    function initPayPalButton() {
+        var description = document.querySelector('#smart-button-container #description');
+        var amount = document.querySelector('#smart-button-container #amount');
+        var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+        var priceError = document.querySelector('#smart-button-container #priceLabelError');
+        var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+        var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+        var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+        var elArr = [description, amount];
+        if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+            invoiceidDiv.style.display = "block";
+        }
+        var purchase_units = [];
+        purchase_units[0] = {};
+        purchase_units[0].amount = {};
+        function validate(event) {
+        return event.value.length > 0;
+        }
+        paypal.Buttons({
+        style: {
+            color: 'gold',
+            shape: 'rect',
+            label: 'paypal',
+            layout: 'vertical',
+        },
+        onInit: function (data, actions) {
+            actions.disable();
+            if(invoiceidDiv.style.display === "block") {
+            elArr.push(invoiceid);
+            }
+            elArr.forEach(function (item) {
+            item.addEventListener('keyup', function (event) {
+                var result = elArr.every(validate);
+                if (result) {
+                actions.enable();
+                } else {
+                actions.disable();
+                }
+            });
+            });
+        },
+        onClick: function () {
+            if (description.value.length < 1) {
+                descriptionError.style.visibility = "visible";
+            } else {
+                descriptionError.style.visibility = "hidden";
+            }
+            if (amount.value.length < 1) {
+                priceError.style.visibility = "visible";
+            } else {
+                priceError.style.visibility = "hidden";
+            }
+            if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                invoiceidError.style.visibility = "visible";
+            } else {
+                invoiceidError.style.visibility = "hidden";
+            }
+                purchase_units[0].description = description.value;
+                purchase_units[0].amount.value = amount.value;
+            if(invoiceid.value !== '') {
+                purchase_units[0].invoice_id = invoiceid.value;
+            }
+        },
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: purchase_units,
+            });
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+                // Full available details
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                // Show a success message within this page, e.g.
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '';
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                // Or go to another URL:  actions.redirect('thank_you.html');
+            });
+        },
+        onError: function (err) {
+            console.log(err);
+        }
+        }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
   <script type="text/javascript" src="js/config.key.js"></script>
+  <script type="text/javascript" src="js/validator.js"></script>
   <script type="text/javascript" src="js/wallet.js"></script>
 </body>
 </html>
