@@ -1,0 +1,131 @@
+.nav-tabs li{
+    padding-right: 20px !important;
+    padding-left: 20px !important;    
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+    border-radius: 12px 12px 0px 0px;
+    background: rgb(63, 123, 206);
+}
+
+.nav-tabs li:hover{
+    background: rgb(38, 77, 132);
+}
+
+.nav-tabs li a{
+    color: white !important;
+    text-decoration: none;
+}
+
+.tab-pane .col-6{
+    padding: 25px !important;
+}
+
+.dataInsertion .heading{
+    width: 100% !important;
+    margin-top: 20px !important;
+    padding-right: 3px !important;
+    color: red;
+    text-align: left;
+}
+
+.dataInsertion .label{
+    width: 100% !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-right: 3px !important;
+    text-align: left;
+}
+
+.dataInsertion input:first-child{
+    margin-top: 35px !important;
+}
+
+.dataInsertion input{
+    width: 100% !important;
+    height: 50px !important;
+    text-align: center;
+    border: 2px solid grey;
+    border-radius: 5px !important;
+}
+
+.dataInsertion select{
+    width: 100% !important;
+    height: 50px !important;
+    text-align: center;
+    border: 2px solid grey;
+    border-radius: 5px !important;
+}
+
+.dataInsertion textarea{
+    width: 100% !important;
+    height: 172px !important;
+    text-align: right;
+    border: 2px solid grey;
+    border-radius: 5px !important;
+    padding: 5px !important;
+}
+
+.dataInsertion .bannerImage{
+    width: 200px  !important;
+}
+
+.dataInsertion .posterImage{
+    width: 200px  !important;
+    height: 300px !important;
+}
+
+.dataInsertion button{
+    margin: 10px !important;
+    background: blue;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border-radius: 8px !important;
+    border: none;
+    color: white;
+}
+
+.dataInsertion th, tr{
+    text-align: center;
+}
+
+.dataInsertion tbody img{
+    width: 50px;
+    height: 50px;
+}
+
+.dataInsertion tbody button{
+    margin: 10px !important;
+    background: red;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border-radius: 8px !important;
+    border: none;
+    color: white;
+}
+
+#dataTable th, tr{
+    text-align: center;
+}
+
+#dataTable img{
+    width: 130px;
+    height: 100px;
+}
+
+#dataTable button{
+    margin: 10px !important;
+    background: red;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border-radius: 8px !important;
+    border: none;
+    color: white;
+}

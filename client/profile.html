@@ -34,19 +34,19 @@
     <!-- Choose treasure -->
     <div class="mt-[calc(var(--screenHeight)*5/100)] text-center">
       <div class="font-albertus">
-        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="Camilia Wilson">
+        <input id="fullname" type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" readonly value="Camilia Wilson">
       </div>
       <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
-        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="yxwang028@outlook.com">
+        <input id="email" type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" readonly value="yxwang028@outlook.com">
       </div>
       <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
-        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="Germany - Euro">
+        <input id="country" type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" readonly value="Germany - Euro">
       </div>
       <div class="mt-[calc(var(--screenHeight)*2.4/100)] font-albertus">
-        <input type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.8/100)] border-yellow text-center hover:text-yellow" readonly value="$993.00">
+        <input id="balance" type="text" class="w-[90%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" readonly value="$993.00">
       </div>
-      <div class="text-center mt-[calc(var(--screenHeight)*2.4/100)] font-essays">
-        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*3/100)] border-black hover:text-yellow hover:border-yellow" onclick="(window.location.href = 'index.html')">LOG OUT</button>
+      <div class="text-center mt-[calc(var(--screenHeight)*4/100)] font-albertus">
+        <button id="logoutBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow hover:text-yellow">LOG OUT</button>
       </div>
     </div>
     <!-- Footer -->
@@ -67,5 +67,7 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="js/config.key.js"></script>
+  <script type="text/javascript" src="js/profile.js"></script>
 </body>
 </html>

@@ -51,52 +51,47 @@
   <div id="screen" style="background-image: url('img/bg_auth.jpg')">
     <!-- Your page content goes here -->
     <div class="absolute w-full top-[calc(var(--screenHeight)*46/100)]">
-      <form action="server.php">
-        <!-- <div class="text-center font-essays">
-          <button type="submit" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*3/100)] border-black hover:text-yellow hover:border-yellow hover:border-yellow" onclick="(window.location.href='index.html')">REGISTRATION</button>
-        </div> -->
-        <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <input type="text" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="FIRST NAME" required>
-          <input type="text" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="LAST NAME" required>
-        </div>
-        <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <input type="text" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="DATE OF BIRTH" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-          <input type="text" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="USERNAME" required>
-        </div>
-        <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <input type="email" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="E-MAIL" required>
-          <input type="password" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="PASSWORD" required>
-        </div>
-        <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <select type="" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" required>
-            <option value="" disabled selected>CURRENCY</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CAD">CAD</option>
-            <option value="BSD">BSD</option>
-          </select>
-          <select type="" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" required>
-            <option value="" disabled selected>COUNTRY</option>
-            <option value="US">UNITED STATES</option>
-            <option value="UK">UNITED KINGDOM</option>
-            <option value="FR">FRANCE</option>
-            <option value="GM">GERMANY</option>
-            <option value="SP">SPAIN</option>
-            <option value="PR">PORTUGAL</option>
-          </select>
-        </div>
-        <div class="flex px-[calc(var(--screenHeight)*6/100)] mt-[calc(var(--screenHeight)/100)]">
-          <input type="checkbox" name="checkTerm" id="checkTerm" required>
-          <label for="checkTerm" class="ml-[calc(var(--screenHeight)*1/100)] text-justify text-[calc(var(--screenHeight)*1.8/100)] font-semibold">
-            I agree to the Terms of Use and the Privacy Policy and confirm that I am at least 18 years of age.
-          </label>
-        </div>
-        <div class="mt-[calc(var(--screenHeight)*2/100)] text-center font-albertus">
-          <button type="submit" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow hover:text-yellow" onclick="(window.location.href='index.html')">REGISTER</button>
-        </div>
-      </form>
+      <!-- <div class="text-center font-essays">
+        <button type="submit" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*3/100)] border-black hover:text-yellow hover:border-yellow hover:border-yellow" onclick="(window.location.href='index.html')">REGISTRATION</button>
+      </div> -->
+      <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <input id="firstname" type="text" name="firstname" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="FIRST NAME" required>
+        <input id="lastname" type="text" name="lastname" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="LAST NAME" required>
+      </div>
+      <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <input id="birthday" type="text" name="birthday" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="DATE OF BIRTH" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+        <input id="username" type="text" name="username" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="USERNAME" required>
+      </div>
+      <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <input id="email" type="email" name="email" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="E-MAIL" required>
+        <input id="password" type="password" name="password" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" placeholder="PASSWORD" required>
+      </div>
+      <div class="flex justify-center text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <select id="currency" name="currency" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" required>
+          <option value="" disabled selected>CURRENCY</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="CAD">CAD</option>
+          <option value="BSD">BSD</option>
+        </select>
+        <select id="country" name="country" class="w-[42%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow ml-[calc(var(--screenHeight)*1/100)]" required>
+          <option value="" disabled selected>COUNTRY</option>
+        </select>
+      </div>
+      <div class="flex px-[calc(var(--screenHeight)*6/100)] mt-[calc(var(--screenHeight)/100)]">
+        <input id="checkTerm" type="checkbox" name="checkTerm" id="checkTerm" required>
+        <label for="checkTerm" class="ml-[calc(var(--screenHeight)*1/100)] text-justify text-[calc(var(--screenHeight)*1.8/100)] font-semibold">
+          I agree to the Terms of Use and the Privacy Policy and confirm that I am at least 18 years of age.
+        </label>
+      </div>
+      <div class="mt-[calc(var(--screenHeight)*2/100)] text-center font-albertus">
+        <button id="registerBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow hover:text-yellow">REGISTER</button>
+      </div>
     </div>
   </div>
+  <script type="text/javascript" src="js/config.key.js"></script>
+  <script type="text/javascript" src="js/validator.js"></script>
+  <script type="text/javascript" src="js/register.js"></script>
 </body>
 </html>

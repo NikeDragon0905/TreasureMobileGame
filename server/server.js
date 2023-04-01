@@ -19,6 +19,7 @@ mongoose.connect(MONGODB_URI, {
 
 // app.use(express.static(`${__dirname}/client/build`))
 app.use('/', express.static(`${__dirname}/../client`))
+app.use('/admin', express.static(`${__dirname}/../admin`))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));

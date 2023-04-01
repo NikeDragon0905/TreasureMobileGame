@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>PotLuck Island - Admins</title>
+    <script src="https://kit.fontawesome.com/32408e9ee9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+
+<body id="page-top" onload="init();">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3">PotLuck - Admin</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                Data
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="users.html">
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                Payments
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="deposits.html">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Deposits</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="withdrawal.html">
+                    <i class="fas fa-wallet"></i>
+                    <span>Withdrawals</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                Settings
+            </div>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="admins.html">
+                    <i class="fas fa-user"></i>
+                    <span>Admins</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div class="container-fluid" style="margin-top: 20px;">
+
+                    <div class="panel with-nav-tabs panel-primary">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#tab1primary" data-toggle="tab" id="msb">Add Admin</a></li>
+                                <li><a href="#tab2primary" data-toggle="tab">Admins List</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane fade" id="tab1primary">
+                                    <div class="row">
+
+                                        <div class="col-6 dataInsertion float-end">
+                                            <div class="row">
+
+                                                <h6 class="heading">Admin Info</h6>
+                                                <h6 class="label">Admin Name</h6>
+                                                <input class="input-lg" id="txtAdminName">
+
+                                                <h6 class="label" style="margin-top: 10px !important;">Admin Role</h6>
+                                                <select id="slAdminRole">
+                                                    <option value="super admin">Super Admin</option>
+                                                    <option value="finance">Finance</option>
+                                                </select>
+
+                                                <h6 class="label" style="margin-top: 10px !important;">Email Address</h6>
+                                                <input class="input-lg" id="txtAdminEmail">
+
+                                                <h6 class="label" style="margin-top: 10px !important;">Password</h6>
+                                                <input class="input-lg" id="txtAdminPassword">
+
+                                                <h6 class="heading">Server</h6>
+                                                <button id="btnInsert" style="width: 100%; height: 50px !important; background: green;"><i class="fas fa-save"></i> Insert</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tab2primary">
+                                    <div class="row dataInsertion">
+
+                                        <h6 class="heading">Admins</h6>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Email Address</th>
+                                                            <th>Role</th>
+                                                            <th>Password</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="myTable">
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; PotLuck Island 2023</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="./script/admin.js"></script>
+</body>
+
+</html>

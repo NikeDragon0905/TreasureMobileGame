@@ -51,21 +51,22 @@
   <div id="screen" style="background-image: url('img/bg_auth.jpg')">
     <!-- Your page content goes here -->
     <div class="absolute w-full top-[calc(var(--screenHeight)*50/100)]">
-      <form action="">
-        <div class="text-center font-albertus">
-          <input type="email" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="E-mail" required>
-        </div>
-        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <input type="password" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="Password" required>
-        </div>
-        <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-          <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] text-green text-[calc(var(--screenHeight)*2.4/100)] font-adumu hover:text-darkgreen" onclick="(window.location.href='register.html')">FORGOT POAAWORD?</button>
-        </div>
-        <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
-          <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow" onclick="(window.location.href='home.html')">LOG IN</button>
-        </div>
-      </form>
+      <div class="text-center font-albertus">
+        <input id="email" type="email" name="email" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="E-MAIL" required>
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <input id="password" type="password" name="password" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="PASSWORD" required>
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
+        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] text-green text-[calc(var(--screenHeight)*2.4/100)] font-adumu hover:text-darkgreen" onclick="(window.location.href='index.html')">FORGOT POAAWORD?</button>
+      </div>
+      <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
+        <button id="loginBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">LOG IN</button>
+      </div>
     </div>
   </div>
+  <script type="text/javascript" src="js/config.key.js"></script>
+  <script type="text/javascript" src="js/validator.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

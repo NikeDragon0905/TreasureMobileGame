@@ -29,31 +29,25 @@
     <!-- Header -->
     <div class="flex w-full h-[calc(var(--screenHeight)*16.8/100)] px-[calc(var(--screenHeight)*2/100)] justify-between items-center">
       <img src="img/symbol_chest.png" class="w-[calc(var(--screenHeight)*13/100)]">
-      <div class="font-essays">
-        <h3 class="text-white text-[calc(var(--screenHeight)*4/100)] text-shadow-black">AHOY, <label>SVANTE</label>!</h3>
-        <h3 class="text-white text-[calc(var(--screenHeight)*4/100)] text-shadow-black">BALANCE: $<label>XXXX</label></h3>
+      <div class="font-essays text-right">
+        <h3 class="text-white text-[calc(var(--screenHeight)*4/100)] text-shadow-black">AHOY, <label id="username" class="uppercase">NAME</label>!</h3>
+        <h3 class="text-white text-[calc(var(--screenHeight)*4/100)] text-shadow-black">BALANCE: $<label id="balance">XXXX</label></h3>
       </div>
     </div>
     <!-- Winning prize -->
     <div class="text-center">
       <h3 class="mt-[calc(var(--screenHeight)*1.5/100)] text-white text-[calc(var(--screenHeight)*4/100)] font-adumu text-shadow-black">TODAY'S WINNINGS:</h3>
-      <h3 class="mt-[calc(var(--screenHeight)*-5.2/100)] text-green text-[calc(var(--screenHeight)*12/100)] font-essays text-shadow-yellow">$<label>5000.00</label></h3>
+      <h3 class="mt-[calc(var(--screenHeight)*-5.2/100)] text-green text-[calc(var(--screenHeight)*12/100)] font-essays text-shadow-yellow">$<label id="total_winnings">0</label></h3>
     </div>
     <!-- Treasure box -->
     <div class="mt-[calc(var(--screenHeight)*-3.5/100)] flex w-full justify-center">
-      <img src="img/symbol_play.png" class="w-[calc(var(--screenHeight)*35/100)]">
+      <img src="img/symbol_play.png" class="w-[calc(var(--screenHeight)*35/100)]" alt="chest">
     </div>
     <!-- Choose treasure -->
     <div class="mt-[calc(var(--screenHeight)*0.5/100)] text-center">
       <h3 class="text-white text-[calc(var(--screenHeight)*4/100)] font-adumu text-shadow-darkgreen">CHOOSE YOUR TREASURE:</h3>
       <div class="text-center font-albertus">
-        <select class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" required>
-          <option value="2">PLAY $2 (WIN $20)</option>
-          <option value="10">PLAY $2 (WIN $20)</option>
-          <option value="50">PLAY $2 (WIN $20)</option>
-          <option value="100">PLAY $2 (WIN $20)</option>
-          <option value="500">PLAY $2 (WIN $20)</option>
-        </select>
+        <select id="playmodes" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" required></select>
       </div>
       <div class="text-center font-albertus mt-[calc(var(--screenHeight)*1/100)]">
         <button id="playBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow hover:text-yellow">PLAY NOW</button>
@@ -63,31 +57,31 @@
     <div class="absolute w-full bottom-[calc(var(--screenHeight)*0.4/100)]">
       <div class="flex justify-between mt-[calc(var(--screenHeight)*3.6/100)] px-[calc(var(--screenHeight)*2/100)]">
         <a href="#" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
-          <img src="img/icon_home_on.png" class="w-[calc(var(--screenHeight)*7/100)]">
+          <img src="img/icon_home_on.png" class="w-[calc(var(--screenHeight)*7/100)]" alt="home-selected">
         </a>
         <a href="wallet.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
-          <img src="img/icon_wallet.png" class="w-[calc(var(--screenHeight)*8/100)]">
+          <img src="img/icon_wallet.png" class="w-[calc(var(--screenHeight)*8/100)]" alt="wallet">
         </a>
         <a href="leaderboard.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
-          <img src="img/icon_leaderboard.png" class="w-[calc(var(--screenHeight)*7/100)]">
+          <img src="img/icon_leaderboard.png" class="w-[calc(var(--screenHeight)*7/100)]" alt="profile">
         </a>
         <a href="profile.html" class="px-[calc(var(--screenHeight)*1.6/100)] py-[calc(var(--screenHeight)*0.6/100)]">
-          <img src="img/icon_profile.png" class="w-[calc(var(--screenHeight)*7/100)]">
+          <img src="img/icon_profile.png" class="w-[calc(var(--screenHeight)*7/100)]" alt="profile">
         </a>
       </div>
     </div>
     <!-- Playground -->
     <div class="dialog" id="playDialog">
       <div class="modal-content" id="btnClicker">
-        <nav class="header-bar">
-          <p id="lblCount">Clicks : 0</p>
-          <p id="lblTimer">00:15</p>
+        <nav class="header-bar font-albertus">
+          <p id="lblCount">CLICKS : 0</p>
+          <p id="lblTimer">00:00</p>
         </nav>
         <img src="img/symbol_play.png" id="chestAnime">
       </div>
     </div>
   </div>
-
+  <script type="text/javascript" src="js/config.key.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
