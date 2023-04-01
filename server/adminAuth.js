@@ -1,6 +1,6 @@
 const
 	jwt = require('jsonwebtoken'),
-	User = require('./models/User.js'),
+	Admin = require('./models/Admin.js'),
 	expiresIn = 3600000,
 	{ JWT_SECRET } = process.env || 'rcr'
 
@@ -27,7 +27,7 @@ function verifyToken(req, res, next) {
 		if(err) return res.json({success: false, message: "Invalid token.", code: 401})
 		if((new Date()).getTime() > decodedData.iat + expiresIn) return res.json({success: false, message: "expired token.", code: 401})
 		// otherwise, search for user by id that was embedded in token
-		User.findById(decodedData._id, (err, user) => {
+		Admin.findById(decodedData._id, (err, user) => {
 			// if no user, deny access
 			if(!user) return res.json({success: false, message: "Invalid token.", code: 401})
 			// otherwise, add user to req object

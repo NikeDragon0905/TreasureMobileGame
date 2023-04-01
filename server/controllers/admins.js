@@ -1,10 +1,10 @@
-const User = require('../models/User.js')
+const Admin = require('../models/Admin.js')
 const signToken = require('../serverAuth.js').signToken
 
 module.exports = {
 	// list all users
 	index: (req, res) => {
-		User.find({}, (err, users) => {
+		Admin.find({}, (err, users) => {
 			res.json(users)
 		})
 	},
@@ -12,7 +12,7 @@ module.exports = {
 	// get one user
 	show: (req, res) => {
 		console.log("Current User:")
-		User.findById(req.params.id, (err, user) => {
+		Admin.findById(req.params.id, (err, user) => {
 			res.json(user)
 		})
 	},
@@ -21,7 +21,7 @@ module.exports = {
 	create: (req, res) => {
 		// res.json({success: true});
 		// return;
-		User.create(req.body, (err, user) => {
+		Admin.create(req.body, (err, user) => {
 			if(err) {
 				console.log(err);
 				return res.json({success: false, code: err.code})
@@ -34,9 +34,9 @@ module.exports = {
 
 	// update an existing user
 	update: (req, res) => {
-		User.findById(req.params.id, (err, user) => {
+		Admin.findById(req.params.id, (err, user) => {
 			Object.assign(user, req.body)
-			user.save((err, updatedUser) => {
+			Admin.save((err, updatedUser) => {
 				res.json({success: true, message: "User updated.", user})
 			})
 		})
@@ -44,7 +44,7 @@ module.exports = {
 
 	// delete an existing user
 	destroy: (req, res) => {
-		User.findByIdAndRemove(req.params.id, (err, user) => {
+		Admin.findByIdAndRemove(req.params.id, (err, user) => {
 			res.json({success: true, message: "User deleted.", user})
 		})
 	},
@@ -53,7 +53,7 @@ module.exports = {
 	authenticate: (req, res) => {
 		console.log(req.body);
 		// check if the user exists
-		User.findOne({email: req.body.email}, (err, user) => {
+		Admin.findOne({email: req.body.email}, (err, user) => {
 			// if there's no user or the password is invalid
 			if(!user || !user.validPassword(req.body.password)) {
 				// deny access

@@ -4,10 +4,14 @@ const
 	app = express(),
 	logger = require('morgan'),
 	bodyParser = require('body-parser'),
+	cors = require('cors'),
+	session = require('express-session'),
 	mongoose = require('mongoose'),
 	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
 	PORT = process.env.PORT || 3001,
-	usersRoutes = require('./routes/users.js')
+	usersRoutes = require('./routes/users.js'),
+	clientRoutes = require('./routes/client.js'),
+	adminRoutes = require('./routes/admin.js')
 
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, {
@@ -24,12 +28,22 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+app.use(session({
+	secret: 'justsomestuff',
+	resave: false,
+	saveUninitialized: false,
+	expires: new Date(Date.now() + (60 * 60 * 24 * 7 * 1000)),
+	cookie: {  } ,
+}));
 
 app.get('/api', (req, res) => {
 	res.json({message: "API root."})
 })
 
 app.use('/api/users', usersRoutes)
+app.use('/api/client', clientRoutes)
+app.use('/api/admin', adminRoutes)
 
 // app.use('*', (req, res) => {
 // 	res.sendFile(`${__dirname}/client/build/index.html`)
