@@ -79,4 +79,13 @@ $(document).ready(function() {
       }
     });
   })
+
+  var sound = new Howl({
+    src: ['../audio/bg.mp3'],
+    autoplay: true,
+    loop: true,
+    volume: 0.5
+  });
+  
+  setTimeout(sound.play, 3000);
 })
