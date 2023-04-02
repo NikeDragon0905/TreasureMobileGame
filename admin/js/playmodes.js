@@ -1,25 +1,3 @@
-function initCurrencySelector() {
-  $currency = $('#currency');
-  let dom = '';
-  for (let key in CURRENCY_TYPE) {
-    dom += `<option value="${key}">${CURRENCY_TYPE[key]}</option>`;
-  }
-  $currency.append(dom);
-}
-
-initCurrencySelector();
-
-function initCountrySelector() {
-  $country = $('#country');
-  let dom = '';
-  for (let key in COUNTRY_NAME) {
-    dom += `<option value="${key}">${COUNTRY_NAME[key]}</option>`;
-  }
-  $country.append(dom);
-}
-
-initCountrySelector();
-
 $.ajaxSetup({
   headers: {
     'token': localStorage.getItem('token')
@@ -28,7 +6,7 @@ $.ajaxSetup({
 
 function init() {
   $.ajax({
-    url: SERVER_URL + '/api/admin/userlist',
+    url: SERVER_URL + '/api/admin/playmodes',
     type: 'GET',
     // dataType: 'json',
     // data,
@@ -37,26 +15,23 @@ function init() {
         console.log(res);
         const { success, message, code, data } = res;
         if (success) {
-          $tbody = $('#users tbody');
+          $tbody = $('#categories tbody');
+          console.log($tbody);
           let dom = '';
-          if (data.users.length === 0) {
-            dom = '<tr><td colspan="10">No data to display.</td></tr>';
+          if (data.playmodes.length === 0) {
+            dom = '<tr><td colspan="6">No data to display.</td></tr>';
           } else {
-            data.users.map((row, key) => {
+            data.playmodes.map((row, key) => {
               dom += `<tr>
                 <td>${key + 1}</td>
-                <td>${row.firstname}</td>
-                <td>${row.lastname}</td>
-                <td>${new Date(row.birthday).toISOString().slice(0, 10)}</td>
-                <td>${row.username}</td>
-                <td>${row.email}</td>
-                <td>${CURRENCY_TYPE[row.currency]}</td>
-                <td>${row.country}</td>
-                <td data-value="${row.balance}">$${row.balance.toLocaleString()}</td>
+                <td data-value="${row.need}">$${row.need.toLocaleString()}</td>
+                <td data-value="${row.benefit}">$${row.benefit.toLocaleString()}</td>
+                <td data-value="${row.nth_player}">${row.nth_player}</td>
+                <td data-value="${row.min_click}">${row.min_click}</td>
+                <td data-value="${row.cur_order}">${row.cur_order}</td>
                 <td>
                   <button class="btn btn-sm btn-primary" data-role="edit" data-index="${row._id}">Edit</button>
                   <button class="btn btn-sm btn-outline-primary" data-role="remove" data-index="${row._id}">Remove</button>
-                  <button class="btn btn-sm btn-success" data-role="dm" data-index="${row._id}">D.M</button>
                 </td>
               </tr>`
             })
@@ -83,29 +58,34 @@ init();
 var prev = '';
 
 $(document).ready(function() {
-  $('#users').on('click', 'button[data-role=edit]', function() {
+  $('#categories').on('click', 'button[data-role=edit]', function() {
     $tr = $(this).closest('tr');
     prev = $tr.html();
-    $td = $tr.children('td').eq(8);
-    $td.html(`<input type="number" min="0" value="${$td.attr('data-value')}">`);
+    for (let i = 1; i <= 5; i ++) {
+      $td = $tr.children('td').eq(i);
+      $td.html(`<input type="number" min="0" value="${$td.attr('data-value')}">`);
+    }
     $(this).text('Save');
     $(this).attr('data-role', 'save');
     $removeBtn = $tr.find('button[data-role=remove]');
     $removeBtn.text('Cancel');
     $removeBtn.attr('data-role', 'cancel');
   });
-  $('#users').on('click', 'button[data-role=cancel]', function() {
+  $('#categories').on('click', 'button[data-role=cancel]', function() {
     $tr = $(this).closest('tr');
     $tr.html(prev);
   });
-  $('#users').on('click', 'button[data-role=save]', function() {
+  $('#categories').on('click', 'button[data-role=save]', function() {
+    const columns = ['', 'need', 'benefit', 'nth_player', 'min_click', 'cur_order'];
     $tr = $(this).closest('tr');
-    $td = $tr.children('td').eq(8);
+    let data = {};
+    for (let i = 1; i <= 5; i ++) {
+      $td = $tr.children('td').eq(i);
+      data[columns[i]] = Number.parseInt($td.find('input').val());
+    }
     const _id = $(this).attr('data-index');
-    const balance = Number.parseInt($td.find('input').val());
-    const data = { balance };
     $.ajax({
-      url: SERVER_URL + `/api/admin/userlist/${_id}`,
+      url: SERVER_URL + `/api/admin/playmodes/${_id}`,
       type: 'PATCH',
       dataType: 'json',
       data,
@@ -131,13 +111,11 @@ $(document).ready(function() {
         }
       });
   });
-  $('#users').on('click', 'button[data-role=remove]', function() {
+  $('#categories').on('click', 'button[data-role=remove]', function() {
     if (confirm('Do you really want to remove this row?')) {
-      $tr = $(this).closest('tr');
-      $td = $tr.children('td').eq(8);
       const _id = $(this).attr('data-index');
       $.ajax({
-        url: SERVER_URL + `/api/admin/userlist/${_id}`,
+        url: SERVER_URL + `/api/admin/playmodes/${_id}`,
         type: 'DELETE',
         dataType: 'json',
         success: function(res) {
@@ -163,70 +141,27 @@ $(document).ready(function() {
         });
     }
   });
-  $('#users').on('click', 'button[data-role=dm]', function() {
-    const dmsg = prompt('Input any message to this user.');
-    if (dmsg === null) {
-      return;
-    }
-    const _id = $(this).attr('data-index');
-    const data = { _id, dmsg };
-    $.ajax({
-      url: SERVER_URL + `/api/admin/message`,
-      type: 'POST',
-      dataType: 'json',
-      data,
-      success: function(res) {
-          // Handle successful response
-          console.log(res);
-          const { success, message, code } = res;
-          if (success) {
-            alert('Message successfully posted');
-          } else {
-            if (code === 401) {
-              alert('Please login first.');
-              window.location.href = 'index.html';
-              return;
-            }
-            alert(message);
-          }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          // Handle error response
-          console.log('Error:', textStatus, errorThrown);
-        }
-      });
-  });
 
   $('#addNewBtn').click(function(event) {
-    const firstname = $('#firstname').val();
-    const lastname = $('#lastname').val();
-    const birthday = $('#birthday').val();
-    const username = $('#username').val();
-    const email = $('#email').val();
-    const password = $('#password').val();
-    const currency = $('#currency').val();
-    const country = $('#country').val();
+    const need = $('#need').val();
+    const benefit = $('#benefit').val();
+    const nth_player = $('#nth_player').val();
+    const min_click = $('#min_click').val();
+    const cur_order = $('#cur_order').val();
     if (
-      isEmpty(firstname) ||
-      isEmpty(lastname) ||
-      isEmpty(birthday) ||
-      isEmpty(username) ||
-      isEmpty(email) ||
-      isEmpty(password) ||
-      isEmpty(currency) ||
-      isEmpty(country)
+      isEmpty(need) ||
+      isEmpty(benefit) ||
+      isEmpty(nth_player) ||
+      isEmpty(min_click) ||
+      isEmpty(cur_order)
     ) {
       alert('Please fill in all information.');
       return;
     }
-    if (!emailValidation(email)) {
-      alert('Email form is not valid.');
-      return;
-    }
 
-    const data = { firstname, lastname, birthday, username, email, password, currency, country };
+    const data = { need, benefit, nth_player, min_click, cur_order };
     $.ajax({
-      url: SERVER_URL + '/api/users',
+      url: SERVER_URL + '/api/admin/playmodes',
       type: 'POST',
       dataType: 'json',
       data,
@@ -235,8 +170,8 @@ $(document).ready(function() {
           console.log(res);
           const { success, message } = res;
           if(success) {
-            alert('New user successfully added');
-            window.location.href = 'users.html';
+            alert('New category has successfully added');
+            window.location.href = 'playmodes.html';
           } else {
             alert(message);
           }

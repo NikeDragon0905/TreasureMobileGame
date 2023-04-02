@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PotLuck Island - Deposit Records</title>
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <title>PotLuck Island - Categories</title>
+    <!-- include jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/32408e9ee9.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
-<body id="page-top" onload="init();">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -46,7 +48,7 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="users.html">
                     <i class="fas fa-user"></i>
                     <span>Users</span>
@@ -58,7 +60,7 @@
                 Payments
             </div>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="deposits.html">
                     <i class="fas fa-dollar-sign"></i>
                     <span>Deposits</span>
@@ -90,15 +92,15 @@
                     <span>Global Setting</span>
                 </a>
             </li>
-            
+
             <!-- <li class="nav-item">
                 <a class="nav-link" href="admins.html">
                     <i class="fas fa-user"></i>
                     <span>Admins</span>
                 </a>
-            </li>
+            </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-bell"></i>
                     <span>Notifications</span>
@@ -118,6 +120,7 @@
 
             <!-- Main Content -->
             <div id="content">
+
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -233,30 +236,81 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Deposits List</h1>
+                    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4 movieListing">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email Address</th>
-                                            <th>Deposit Amount</th>
-                                            <th>Deposit Date</th>
-                                            <th>Delete Record</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="myTable">
-                                        
-                                    </tbody>
-                                </table>
+                    <div class="panel with-nav-tabs panel-primary">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#listTab" data-toggle="tab" id="msb">Category List</a></li>
+                                <li><a href="#addTab" data-toggle="tab">Add New Category</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <!-- User List -->
+                                <div class="tab-pane face active" id="listTab">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="categories" class="table table-bordered" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Cost</th>
+                                                            <th>Prize</th>
+                                                            <th>Number of Player</th>
+                                                            <th>Minimum Click</th>
+                                                            <th>Current Order</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add New User -->
+                                <div class="tab-pane fade" id="addTab">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="need">Cost($)</label>
+                                                    <input id="need" type="Number" min="1" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="benefit">Prize($)</label>
+                                                    <input id="benefit" type="Number" min="1" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="nth_player">Number of Player</label>
+                                                    <input id="nth_player" type="Number" min="1" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="min_click">Minimum Clicks</label>
+                                                    <input id="min_click" type="Number" min="1" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="cur_order">Current Order</label>
+                                                    <input id="cur_order" type="Number" min="1" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center mt-5">
+                                                <div class="col-md-6 text-center">
+                                                    <button id="addNewBtn" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- DataTales Example -->
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -285,23 +339,13 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="./script/deposit.js"></script>
+    <script type="text/javascript" src="js/config.key.js"></script>
+    <script type="text/javascript" src="js/validator.js"></script>
+    <script type="text/javascript" src="js/playmodes.js"></script>
+
 </body>
 
 </html>

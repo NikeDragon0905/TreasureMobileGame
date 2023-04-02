@@ -7,6 +7,8 @@ function initCurrencySelector() {
   $currency.append(dom);
 }
 
+initCurrencySelector();
+
 function initCountrySelector() {
   $country = $('#country');
   let dom = '';
@@ -15,7 +17,6 @@ function initCountrySelector() {
   }
   $country.append(dom);
 }
-
 
 initCountrySelector();
 

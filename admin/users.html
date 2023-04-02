@@ -9,6 +9,7 @@
     <title>PotLuck Island - Users</title>
     <!-- include jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/32408e9ee9.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -79,9 +80,17 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="game-control.html">
+                <a class="nav-link" href="playmodes.html">
                     <i class="fas fa-gamepad"></i>
-                    <span>Game Control</span>
+                    <span>Categories</span>
+                </a>
+            </li>
+            
+
+            <li class="nav-item">
+                <a class="nav-link" href="global-setting.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Global Setting</span>
                 </a>
             </li>
 
@@ -228,34 +237,100 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Users List</h1>
+                    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4 movieListing">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="users" class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Firstname</th>
-                                            <th>Lastname</th>
-                                            <th>Birthday</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Currency</th>
-                                            <th>Country</th>
-                                            <th>Balance</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                    </tbody>
-                                </table>
+                    <div class="panel with-nav-tabs panel-primary">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#listTab" data-toggle="tab" id="msb">User List</a></li>
+                                <li><a href="#addTab" data-toggle="tab">Add New User</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <!-- User List -->
+                                <div class="tab-pane face active" id="listTab">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="users" class="table table-bordered" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Firstname</th>
+                                                            <th>Lastname</th>
+                                                            <th>Birthday</th>
+                                                            <th>Username</th>
+                                                            <th>Email</th>
+                                                            <th>Currency</th>
+                                                            <th>Country</th>
+                                                            <th>Balance</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add New User -->
+                                <div class="tab-pane fade" id="addTab">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="firstname">Firstname</label>
+                                                    <input id="firstname" type="text" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="lastname">Lastname</label>
+                                                    <input id="lastname" type="text" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="birthday">Birthday</label>
+                                                    <input id="birthday" type="text" class="form-control" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="username">Username</label>
+                                                    <input id="username" type="text" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="email">Email</label>
+                                                    <input id="email" type="email" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="password">Password</label>
+                                                    <input id="password" type="password" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="currency">Currency</label>
+                                                    <select id="currency" class="form-control">
+                                                        <option value="" selected disabled>Select Currency</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <label for="country">Country</label>
+                                                    <select id="country" class="form-control">
+                                                        <option value="" selected disabled>Select Coutnry</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center mt-5">
+                                                <div class="col-md-6 text-center">
+                                                    <button id="addNewBtn" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- DataTales Example -->
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -288,7 +363,8 @@
     <script src="js/sb-admin-2.min.js"></script>
     <!-- Page level custom scripts -->
     <script type="text/javascript" src="js/config.key.js"></script>
-    <script src="js/users.js"></script>
+    <script type="text/javascript" src="js/validator.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
 
 </body>
 

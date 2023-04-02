@@ -96,14 +96,18 @@ module.exports = {
                                     playlog.playmode = playmode.need;
                                     playlog
                                         .save()
-                                        .then(() => res.json({
-                                            success: true,
-                                            message: 'You can play!',
-                                            data: {
-                                                balance: user.balance,
-                                                playlog_id: playlog.id
-                                            }
-                                        }))
+                                        .then(async () => {
+                                            const setting = await Setting.findOne();
+                                            res.json({
+                                                success: true,
+                                                message: 'You can play!',
+                                                data: {
+                                                    balance: user.balance,
+                                                    playlog_id: playlog.id,
+                                                    game_timer: setting.game_timer
+                                                }
+                                            })
+                                        })
                                         .catch(err => console.log(err));
                                 })
                                 .catch(err => console.log(err));

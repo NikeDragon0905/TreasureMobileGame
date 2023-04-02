@@ -66,7 +66,7 @@ function preCheck() {
         const { success, message, code, data } = res;
         if(success) {
           $('#balance').text(data.balance.toLocaleString());
-          playGame(data.playlog_id, playmode_id);
+          playGame(data.playlog_id, playmode_id, data.game_timer);
         } else {
           if (code === 401) {
             alert('Please login first.');
@@ -83,11 +83,11 @@ function preCheck() {
     });
 }
 
-function playGame(playlog_id, playmode_id) {
+function playGame(playlog_id, playmode_id, game_timer) {
   showPlayground();
   var lblCount = document.getElementById('lblCount');
   var lblTimer = document.getElementById('lblTimer');
-  var sec = ROUND_TIME;
+  var sec = game_timer;
 
   lblCount.innerHTML = 'Clicks : 0';
   lblTimer.innerHTML = '00:' + (sec /10 < 1 ? '0' : '') + sec;

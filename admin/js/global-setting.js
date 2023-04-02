@@ -15,7 +15,7 @@ function init() {
         console.log(res);
         const { success, message, code, data } = res;
         if (success) {
-          $tbody = $('#game-control tbody');
+          $tbody = $('#global-setting tbody');
           let dom = '';
           let index = 1;
           for (let key in data.setting) {
@@ -23,7 +23,7 @@ function init() {
             dom += `<tr>
               <td>${index ++}</td>
               <td>${key}</td>
-              <td><input type="number" min="0" value="${data.setting[key]}"></td>
+              <td><input type="number" min="0" class="text-right" value="${data.setting[key]}"></td>
               <td><button class="btn btn-sm btn-primary" data-role="save" data-index="${data.setting._id}">Save</button></td>
             </tr>`;
           }
@@ -49,7 +49,7 @@ init();
 var prev = '';
 
 $(document).ready(function() {
-  $('#game-control').on('click', 'button[data-role=save]', function() {
+  $('#global-setting').on('click', 'button[data-role=save]', function() {
     $tr = $(this).closest('tr');
     const field = $tr.children('td').eq(1).text();
     const value = Number.parseInt($tr.children('td').eq(2).find('input').val());
