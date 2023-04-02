@@ -12,7 +12,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           const balance = Number.parseInt(data.balance);
@@ -114,7 +113,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code, data } = res;
           if (success) {
             $('#balance').text(data.balance.toLocaleString());
@@ -147,7 +145,6 @@ $(document).ready(function() {
       // data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code, data } = res;
           if (success) {
             updateNotificationContent(data.notifications);
@@ -178,7 +175,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code, data } = res;
           if (success) {
             updateNotificationContent(data.notifications);
@@ -207,7 +203,6 @@ $(document).ready(function() {
       // data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code, data } = res;
           if (success) {
             updateNotificationContent(data.notifications);

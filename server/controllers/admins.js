@@ -11,7 +11,6 @@ module.exports = {
 
 	// get one user
 	show: (req, res) => {
-		console.log("Current User:")
 		Admin.findById(req.params.id, (err, user) => {
 			res.json(user)
 		})

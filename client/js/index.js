@@ -6,7 +6,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, data } = res;
         if (success) {
           $('#total_winnings').text(data.totalWinnings.toLocaleString());

@@ -12,11 +12,9 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           $tbody = $('#categories tbody');
-          console.log($tbody);
           let dom = '';
           if (data.playmodes.length === 0) {
             dom = '<tr><td colspan="6">No data to display.</td></tr>';
@@ -91,7 +89,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code } = res;
           if (success) {
             alert('Successfully Updated');
@@ -120,7 +117,6 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(res) {
             // Handle successful response
-            console.log(res);
             const { success, message, code } = res;
             if (success) {
               alert('Successfully Removed');
@@ -167,7 +163,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message } = res;
           if(success) {
             alert('New category has successfully added');

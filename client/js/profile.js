@@ -12,7 +12,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           $('#fullname').val(`${data.firstname} ${data.lastname}`);

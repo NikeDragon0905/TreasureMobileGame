@@ -34,7 +34,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           $tbody = $('#users tbody');
@@ -111,7 +110,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code } = res;
           if (success) {
             alert('Successfully Updated');
@@ -140,7 +138,6 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(res) {
             // Handle successful response
-            console.log(res);
             const { success, message, code } = res;
             if (success) {
               alert('Successfully Removed');
@@ -175,7 +172,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code } = res;
           if (success) {
             alert('Message successfully posted');
@@ -230,7 +226,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message } = res;
           if(success) {
             alert('New user successfully added');

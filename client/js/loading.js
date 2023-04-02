@@ -1,6 +1,5 @@
 setTimeout(function() {
   const screen = document.getElementById('screen');
-  console.log(screen.style);
   screen.style.backgroundImage = 'url("img/bg_loading2.jpg")';
   
   var sound = new Howl({

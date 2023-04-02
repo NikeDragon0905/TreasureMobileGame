@@ -12,7 +12,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           $('#username').text(data.username);
@@ -54,7 +53,6 @@ function hidePlayground() {
 function preCheck() {
   const playmode_id = $('#playmodes').val();
   const data = { playmode_id };
-  console.log(data);
   $.ajax({
     url: SERVER_URL + '/api/client/pre-check',
     type: 'POST',
@@ -62,7 +60,6 @@ function preCheck() {
     data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if(success) {
           $('#balance').text(data.balance.toLocaleString());
@@ -95,7 +92,6 @@ function playGame(playlog_id, playmode_id, game_timer) {
   var userClicks = 0;
 
   var chestAnime = document.getElementById('chestAnime');
-  console.log(chestAnime);
 
   chestAnime.onclick = function(){
     if(sec === 0) return;
@@ -113,7 +109,6 @@ function playGame(playlog_id, playmode_id, game_timer) {
     const screen = document.getElementById('screen');
     const screenWidth = screen.offsetWidth;
     const screenHeight = screen.offsetHeight;
-    console.log(screenHeight);
     const getRandom = (min, max) => Math.floor(Math.random()*(max-min+1)+min);
     chestAnime.style.left= getRandom(0, screenWidth - screenHeight * 24 / 100) +'px'; // 👈🏼 Horizontally
     chestAnime.style.top = getRandom(0, screenHeight - screenHeight * 40 / 100) +'px'; // 👈🏼 Vertically
@@ -133,7 +128,6 @@ function playGame(playlog_id, playmode_id, game_timer) {
 
 function endGame(playlog_id, playmode_id, clicks) {
   const data = {playlog_id, playmode_id, clicks };
-  console.log(data);
   $.ajax({
     url: SERVER_URL + '/api/client/end-game',
     type: 'POST',
@@ -141,7 +135,6 @@ function endGame(playlog_id, playmode_id, clicks) {
     data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, data } = res;
         if(success) {
           if (message === 'win') {

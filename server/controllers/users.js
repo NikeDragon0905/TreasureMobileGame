@@ -11,7 +11,6 @@ module.exports = {
 
 	// get one user
 	show: (req, res) => {
-		console.log("Current User:")
 		User.findById(req.params.id, (err, user) => {
 			res.json(user)
 		})
@@ -21,7 +20,6 @@ module.exports = {
 	create: (req, res) => {
 		// res.json({success: true});
 		// return;
-		console.log(req.body)
 		User.create(req.body, (err, user) => {
 			if(err) {
 				console.log(err);
@@ -52,7 +50,6 @@ module.exports = {
 
 	// the login route
 	authenticate: (req, res) => {
-		console.log(req.body);
 		// check if the user exists
 		User.findOne({email: req.body.email}, (err, user) => {
 			// if there's no user or the password is invalid

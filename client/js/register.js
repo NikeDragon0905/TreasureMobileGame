@@ -66,7 +66,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message } = res;
           if(success) {
             window.location.href = 'index.html';

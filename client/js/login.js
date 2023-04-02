@@ -27,7 +27,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, token } = res;
           if(success) {
             localStorage.setItem('token', token);
@@ -74,7 +73,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message } = res;
           if(success) {
             alert(message)

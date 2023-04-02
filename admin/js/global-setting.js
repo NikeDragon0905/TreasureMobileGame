@@ -12,7 +12,6 @@ function init() {
     // data,
     success: function(res) {
         // Handle successful response
-        console.log(res);
         const { success, message, code, data } = res;
         if (success) {
           $tbody = $('#global-setting tbody');
@@ -63,7 +62,6 @@ $(document).ready(function() {
       data,
       success: function(res) {
           // Handle successful response
-          console.log(res);
           const { success, message, code } = res;
           if (success) {
             alert('Successfully Updated');

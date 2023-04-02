@@ -297,7 +297,6 @@ module.exports = {
     },
 
     withdrawal: async (req, res) => {
-        console.log(req.body);
         let user = await User.findById(req.user.id);
         if(user.balance >= req.body.withdrawal_amount )
             user.balance -= req.body.withdrawal_amount;
