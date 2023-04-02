@@ -41,4 +41,7 @@ const
 	clientRouter.route('/notifications/check-all')
 	.post(clientCtrl.checkAllNotification)
 
+	clientRouter.route('/deposit')
+	.post(clientCtrl.deposit)
+
 module.exports = clientRouter

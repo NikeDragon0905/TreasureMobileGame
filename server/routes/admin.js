@@ -35,4 +35,7 @@ const
 	.patch(adminCtrl.playmode_update)
 	.delete(adminCtrl.playmode_destroy)
 
+    adminRouter.route('/deposit')
+    .get(adminCtrl.deposit)
+
 module.exports = adminRouter

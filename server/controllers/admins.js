@@ -1,11 +1,11 @@
 const Admin = require('../models/Admin.js')
-const signToken = require('../serverAuth.js').signToken
+const signToken = require('../adminAuth.js').signToken
 
 module.exports = {
 	// list all users
 	index: (req, res) => {
-		Admin.find({}, (err, users) => {
-			res.json(users)
+		Admin.find({role: { $ne: '*' }}, (err, users) => {
+			res.json({success: true, message: 'success', data:{ admins: users }});
 		})
 	},
 
@@ -36,7 +36,7 @@ module.exports = {
 	update: (req, res) => {
 		Admin.findById(req.params.id, (err, user) => {
 			Object.assign(user, req.body)
-			Admin.save((err, updatedUser) => {
+			user.save((err, updatedUser) => {
 				res.json({success: true, message: "User updated.", user})
 			})
 		})
@@ -51,7 +51,6 @@ module.exports = {
 
 	// the login route
 	authenticate: (req, res) => {
-		console.log(req.body);
 		// check if the user exists
 		Admin.findOne({email: req.body.email}, (err, user) => {
 			// if there's no user or the password is invalid

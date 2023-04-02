@@ -10,7 +10,8 @@ const
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js'),
 	clientRoutes = require('./routes/client.js'),
-	adminRoutes = require('./routes/admin.js')
+	adminRoutes = require('./routes/admin.js'),
+	adminsRoutes = require('./routes/admins.js')
 
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, {
@@ -34,6 +35,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/users', usersRoutes)
+app.use('/api/admins', adminsRoutes)
 app.use('/api/client', clientRoutes)
 app.use('/api/admin', adminRoutes)
 

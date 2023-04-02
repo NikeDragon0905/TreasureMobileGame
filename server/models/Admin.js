@@ -5,7 +5,7 @@ const
 		username: { type: String, required: true },
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
-		role: { type: String, required: true },
+		role: { type: String, required: true, default: 'superadmin' },
 	})
 
 // adds a method to a user document object to create a hashed password

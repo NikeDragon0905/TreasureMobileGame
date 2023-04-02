@@ -4,6 +4,7 @@ const User = require('../models/User.js')
 const Setting = require('../models/Setting.js')
 const WithDrawal = require('../models/WithDrawal.js')
 const Notification = require('../models/Notification.js')
+const Deposit = require('../models/Deposit.js')
 
 const getNotification = async (req, res) => {
     let notifications = await Notification.find({user: req.user.id, is_shown: false});
@@ -138,7 +139,7 @@ module.exports = {
         const user = await User.findById(req.user.id);
         const playlog = await PlayLog.findById(playlog_id);
         let message = 'lose';
-        if (playmode.cur_order + 1 === playmode.nth_player) {
+        if (playmode.cur_order + 1 >= playmode.nth_player) {
             playmode.cur_order = 0;
             if (parseInt(clicks) >= parseInt(playmode.min_click)) {
                 message = 'win';
@@ -363,6 +364,14 @@ module.exports = {
     checkAllNotification: async (req, res) => {
         await Notification.updateMany({ user: req.user.id }, {is_shown: true});
         getNotification(req, res);
+    },
+
+    deposit: async (req, res) => {
+        let deposit = await Deposit.create({ user: req.user.id, amount: req.body.amount });
+        let user = await User.findById(req.user.id);
+        user.balance += deposit.amount;
+        await user.save();
+        res.json({ success: true, message: 'success', data: { balance: user.balance } });
     }
 
 }
