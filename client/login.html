@@ -8,6 +8,7 @@
   <title>POTLUCK - LOGIN</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/forgotpass.css">
   <!-- include Fonts stylesheet -->
   <link rel="stylesheet" href="font/AlbertusNova/style.css">
   <!-- include Tailwind CSS stylesheet -->
@@ -60,10 +61,32 @@
         <input id="password" type="password" name="password" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="PASSWORD" required>
       </div>
       <div class="text-center mt-[calc(var(--screenHeight)*2/100)] font-albertus">
-        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] text-green text-[calc(var(--screenHeight)*3.6/100)] font-adumu hover:text-darkgreen" onclick="(window.location.href='index.html')">FORGOT PASSWORD?</button>
+        <button class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] text-green text-[calc(var(--screenHeight)*3.6/100)] font-adumu hover:text-darkgreen" id="forgot-btn">FORGOT PASSWORD?</button>
       </div>
       <div class="text-center mt-[calc(var(--screenHeight)*2/100)]">
         <button id="loginBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">LOG IN</button>
+      </div>
+    </div>
+    <!-- Forget Password Content -->
+    <div id="forgotPasswordBlackboard">
+      <div class="header mt-[calc(var(--screenHeight)*6/100)]">
+        <h3 class="text-center text-white font-adumu text-[calc(var(--screenHeight)*8/100)] ">Reset password</h3>
+      </div>
+      <div class="content">
+        <div id="smart-button-container" class="mt-[calc(var(--screenHeight)*3/100)]">
+          
+          <p class="px-2 py-2" id="priceLabelError" style="text-align: center; color: white;">If the account exists, we'll email you instructions to reset the password.</p>
+          <div style="text-align: center">
+            <input type="email" name="receiveEmailInput" id="receiveEmail" maxlength="127" value="" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white font-albertus text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="Enter your email" required>
+          </div>
+          <p id="emailError" style="visibility: hidden; color:red; text-align: center;">Please enter a email</p>
+          <div class="text-center mt-[calc(var(--screenHeight)*4/100)]">
+            <button id="submitBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">RESET</button>
+          </div>
+          <div class="text-center mt-[calc(var(--screenHeight)*4/100)]">
+            <button id="backBtn" class="min-w-[50%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white text-[calc(var(--screenHeight)*2.4/100)] font-albertus border-yellow hover:text-yellow">GO BACK</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

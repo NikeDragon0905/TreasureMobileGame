@@ -42,7 +42,7 @@ $(document).ready(function() {
           console.log('Error:', textStatus, errorThrown);
       }
     });
-  })
+  });
 
   var sound = new Howl({
     src: ['../audio/bg.mp3'],
@@ -51,5 +51,44 @@ $(document).ready(function() {
     volume: 0.5
   });
   setTimeout(sound.play, 3000);
+  
+
+  $('#forgot-btn').on('click', () => $('#forgotPasswordBlackboard').show());
+
+  $('#forgotPasswordBlackboard').on('click', '#backBtn', function() {
+    $('#forgotPasswordBlackboard').hide();
+  });
+
+  $('#forgotPasswordBlackboard').on('click', '#submitBtn', function() {
+    const email = $('#receiveEmail').val();
+
+    if (!emailValidation(email)) {
+      alert('Email form is not valid.');
+      return;
+    }
+    const data = { email };
+    $.ajax({
+      url: SERVER_URL + '/api/client/forgotpassword',
+      type: 'POST',
+      dataType: 'json',
+      data,
+      success: function(res) {
+          // Handle successful response
+          console.log(res);
+          const { success, message } = res;
+          if(success) {
+            alert(message)
+            $('#forgotPasswordBlackboard').hide()
+            // self.click();
+          } else {
+            alert(message);
+          }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          // Handle error response
+          console.log('Error:', textStatus, errorThrown);
+      }
+    });
+  });
   
 })
