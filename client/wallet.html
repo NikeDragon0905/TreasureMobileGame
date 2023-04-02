@@ -77,7 +77,7 @@
       <div class="header]">
         <h3 class="text-center text-white font-adumu text-[calc(var(--screenHeight)*8/100)] ">DEPOSIT</h3>
       </div>
-      <div class="content">
+      <div class="content overflow-auto h-[calc(var(--screenHeight)*80/100)]">
         <div id="smart-button-container" class="mt-[calc(var(--screenHeight)*3/100)]">
           <div style="text-align: center">
             <input type="text" name="descriptionInput" id="description" maxlength="127" value="" class="w-[60%] px-2 py-[calc(var(--screenHeight)*0.6/100)] border-[calc(var(--screenHeight)*0.6/100)] bg-darkgreen text-white font-albertus text-[calc(var(--screenHeight)*2.4/100)] border-yellow text-center hover:text-yellow" placeholder="DESCRIPTION">
@@ -217,9 +217,34 @@
                 // Full available details
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 // Show a success message within this page, e.g.
-                const element = document.getElementById('paypal-button-container');
-                element.innerHTML = '';
-                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                const amount = Math.ceil(Number.parseFloat(orderData.purchase_units[0].amount.value));
+                const request = { amount };
+                $.ajax({
+                  url: SERVER_URL + '/api/client/deposit',
+                  type: 'POST',
+                  dataType: 'json',
+                  data: request,
+                  success: function(res) {
+                      // Handle successful response
+                      console.log(res);
+                      const { success, message, code, data } = res;
+                      if (success) {
+                        $('#balance').text(data.balance.toLocaleString());
+                        alert('Successfully done.');
+                      } else {
+                        if (code === 401) {
+                          alert('Please login first.');
+                          window.location.href = 'login.html';
+                          return;
+                        }
+                        alert(message);
+                      }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                      // Handle error response
+                      console.log('Error:', textStatus, errorThrown);
+                    }
+                  });
                 // Or go to another URL:  actions.redirect('thank_you.html');
             });
         },
