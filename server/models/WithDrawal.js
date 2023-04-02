@@ -2,7 +2,7 @@ const
 	mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs'),
 	withDrawalSchema = new mongoose.Schema({
-		account_name: { type: String, required: true, unique: true }, //Acount Name
+		account_name: { type: String, required: true }, //Acount Name
 		bank: { type: String, required: true }, //Bank Email
 		swift_bic_code: { type: String, required: true }, //swift bic code
 		iban: { type: String, required: true }, //iban

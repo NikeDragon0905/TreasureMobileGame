@@ -67,6 +67,52 @@ module.exports = {
     withdrawal: async (req, res) => {
         let withdrawals = await WithDrawal.find()
         res.json({success: true, message: 'success', data: {withdrawals}})
-    }
+    },
+
+
+    // list all playmodes
+	playmode_index: (req, res) => {
+		PlayMode.find({}, (err, playmodes) => {
+			res.json({success: true, message: "playmode.", data: { playmodes }})
+		})
+	},
+
+	// get one user
+	playmode_show: (req, res) => {
+		console.log("Current playmode:")
+		PlayMode.findById(req.params.id, (err, playmode) => {
+			res.json({success: true, message: "playmode.", data: { playmode }})
+		})
+	},
+
+	// create a new user
+	playmode_create: (req, res) => {
+		// res.json({success: true});
+		// return;
+		PlayMode.create(req.body, (err, playmode) => {
+			if(err) {
+				console.log(err);
+				return res.json({success: false, code: err.code})
+			}
+			res.json({success: true, message: "playmode created."})
+		})
+	},
+
+	// update an existing user
+	playmode_update: (req, res) => {
+		PlayMode.findById(req.params.id, (err, playmode) => {
+			Object.assign(playmode, req.body)
+			playmode.save((err, updatedUser) => {
+				res.json({success: true, message: "playmode updated.", data: { playmode }})
+			})
+		})
+	},
+
+	// delete an existing user
+	playmode_destroy: (req, res) => {
+		PlayMode.findByIdAndRemove(req.params.id, (err, playmode) => {
+			res.json({success: true, message: "playmode deleted.", data: { playmode }})
+		})
+	},
 
 }

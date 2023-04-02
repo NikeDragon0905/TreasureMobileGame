@@ -25,5 +25,14 @@ const
     adminRouter.post('/message', adminCtrl.message)
 
     adminRouter.get('/withdrawal', adminCtrl.withdrawal)
+    
+
+    adminRouter.route('/playmodes')
+	.get(adminCtrl.playmode_index)
+	.post(adminCtrl.playmode_create)
+    adminRouter.route('/playmodes/:id')
+	.get(adminCtrl.playmode_show)
+	.patch(adminCtrl.playmode_update)
+	.delete(adminCtrl.playmode_destroy)
 
 module.exports = adminRouter

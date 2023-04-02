@@ -4,9 +4,11 @@ const
 	clientCtrl = require('../controllers/client.js'),
 	verifyToken = require('../serverAuth.js').verifyToken;
 
-
     clientRouter.route('/landing')
 	.get(clientCtrl.landing);
+
+	clientRouter.route('/forgotpassword')
+	.post(clientCtrl.resetpassword)
 	
 	clientRouter.use(verifyToken)
 
@@ -30,5 +32,13 @@ const
 
 	clientRouter.route('/withdrawal')
 	.post(clientCtrl.withdrawal)
+
+
+	clientRouter.route('/notifications')
+	.get(clientCtrl.getNotification)
+	clientRouter.route('/notifications/:id')
+	.patch(clientCtrl.updateNotification)
+	clientRouter.route('/notifications/check-all')
+	.post(clientCtrl.checkAllNotification)
 
 module.exports = clientRouter
