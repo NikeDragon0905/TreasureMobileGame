@@ -4,6 +4,7 @@ const User = require('../models/User.js')
 const Setting = require('../models/Setting.js')
 const Notification = require('../models/Notification.js')
 const WithDrawal = require('../models/WithDrawal.js');
+const Deposit = require('../models/Deposit.js');
 
 module.exports = {
     // list all playmode
@@ -114,5 +115,10 @@ module.exports = {
 			res.json({success: true, message: "playmode deleted.", data: { playmode }})
 		})
 	},
+
+	deposit: async (req, res) => {
+		const deposits = await Deposit.find().populate('user');
+		res.json({ success: true, message: 'success', data: { deposits } })
+	}
 
 }
